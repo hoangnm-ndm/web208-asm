@@ -31,9 +31,9 @@ npm i concurrently json-server
 npm run dev
 ```
 
-# B2:
+# B2: Cấu hình routing:
 
-- Cấu hình routing:
+- Tại file app-routing.module.ts, thêm nội dung:
 
 ```js
 const routes: Routes = [
@@ -46,6 +46,8 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
 ];
 ```
+
+- dùng terminal để generate tất cả những component còn thiếu ở trên.
 
 - Tại app.component.html:
 
@@ -81,15 +83,97 @@ ng g s services/product
 ```
 
 - Trong file services/product, cấu hình các method:
+  (đổi đường dẫn API theo đúng serve mà bạn đang có)
 
 ```js
+export class ProductService {
   API = 'http://localhost:3000/products';
 
-  constructor(private http: HttpClient) {}
+  constructor(public http: HttpClient) {}
   getProducts(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${this.API}`);
   }
   getProductById(id: string): Observable<IProduct> {
     return this.http.get<IProduct>(`${this.API}/${id}`);
   }
+
+  addProduct(product: IProduct): Observable<IProduct> {
+    return this.http.post<IProduct>(`${this.API}`, product);
+  }
+  updateProduct(product: IProduct): Observable<IProduct> {
+    return this.http.put<IProduct>(`${this.API}/${product.id}`, product);
+  }
+  deleteProduct(id: string): Observable<IProduct> {
+    return this.http.delete<IProduct>(`${this.API}/${id}`);
+  }
+}
 ```
+
+# B5: get products-list
+
+Trong products-list/products-list.component.ts, gọi ra danh sách sản phẩm:
+
+```js
+export class ProductsListComponent {
+  products: IProduct[] = [];
+  constructor(private productService: ProductService) {
+    this.productService.getProducts().subscribe(
+      (data) => {
+        this.products = data;
+      },
+      (error) => console.log(error.message)
+    );
+  }
+}
+```
+
+- Đoạn code trên:
+  - khởi tạo 1 biến products
+  - Những nội dung trong hàm constructor sẽ được khởi chạy khi component được gọi
+  - trong hàm constructor(), gọi service getProducts mà chúng ta đã xây dựng.
+
+# B6: Xây dựng giao diện trang product-list:
+
+Trong products-list/products-list.component.html:
+
+```html
+<a routerLink="product-create">Create New</a>
+<div class="container">
+  <div class="row">
+    <div class="col-3">STT</div>
+    <div class="col-3">Name</div>
+    <div class="col-3">Price</div>
+    <div class="col-3">Action</div>
+  </div>
+  <div class="row" *ngFor="let product of products; index as i">
+    <div class="col-3">{{ i + 1 }}</div>
+    <div class="col-3">{{ product.name }}</div>
+    <div class="col-3">{{ product.price }}</div>
+    <div class="col-3">
+      <button>View Detail</button>
+      <button>Delete</button>
+      <button>Update</button>
+    </div>
+  </div>
+</div>
+```
+
+- khởi chạy `ng s -o ` và kiểm tra xem đã hiển thị được danh sách sản phẩm hay chưa.
+
+# B7: Xây dựng tính năng xoá
+
+# B8: Xây dựng tính năng/trang create new product (form)
+
+# B9: Xây dựng tính năng/trang update product
+
+# B10: Xây dựng trang product detail
+
+# B11: Xây dựng tính năng register
+
+# B12: Xây dựng tính năng login
+
+# B13: Xây dựng tính năng phân quyền
+
+- Khi đăng nhập và có quyền admin -> chuyển về trang products-list
+- Khi chưa đăng nhập, thông báo chưa đăng nhập
+- Khi đã đăng nhập quyền member -> hiển thị trang products-list với tính năng thêm, sửa, xoá bị disnable
