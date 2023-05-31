@@ -1,0 +1,19 @@
+<a routerLink="product-create">Create New</a>
+<div class="container">
+  <div class="row">
+    <div class="col-3">STT</div>
+    <div class="col-3">Name</div>
+    <div class="col-3">Price</div>
+    <div class="col-3">Action</div>
+  </div>
+  <div class="row" *ngFor="let product of products; index as i">
+    <div class="col-3">{{ i + 1 }}</div>
+    <div class="col-3">{{ product.name }}</div>
+    <div class="col-3">{{ product.price }}</div>
+    <div class="col-3">
+      <button>View Detail</button>
+      <button>Delete</button>
+      <button>Update</button>
+    </div>
+  </div>
+</div>
