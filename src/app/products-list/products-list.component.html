@@ -1,18 +1,18 @@
-<a routerLink="product-create">Create New</a>
 <div class="container">
+  <a routerLink="product-create">Create New</a>
   <div class="row">
-    <div class="col-3">STT</div>
-    <div class="col-3">Name</div>
-    <div class="col-3">Price</div>
-    <div class="col-3">Action</div>
+    <div class="col-3 d-flex justify-content-around">STT</div>
+    <div class="col-3 d-flex justify-content-around">Name</div>
+    <div class="col-3 d-flex justify-content-around">Price</div>
+    <div class="col-3 d-flex justify-content-around">Action</div>
   </div>
   <div class="row" *ngFor="let product of products; index as i">
-    <div class="col-3">{{ i + 1 }}</div>
-    <div class="col-3">{{ product.name }}</div>
-    <div class="col-3">{{ product.price }}</div>
-    <div class="col-3">
+    <div class="col-3 d-flex justify-content-around">{{ i + 1 }}</div>
+    <div class="col-3 d-flex justify-content-around">{{ product.name }}</div>
+    <div class="col-3 d-flex justify-content-around">{{ product.price }}</div>
+    <div class="col-3 d-flex justify-content-around">
       <button>View Detail</button>
-      <button>Delete</button>
+      <button class="btn btn-danger" (click)="delete(product.id!)">Xóa</button>
       <button>Update</button>
     </div>
   </div>

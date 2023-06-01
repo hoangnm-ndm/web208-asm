@@ -17,4 +17,9 @@ export class ProductsListComponent {
       (error) => console.log(error.message)
     );
   }
+  delete(id: string) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.products = this.products.filter((product) => product.id !== id);
+    });
+  }
 }

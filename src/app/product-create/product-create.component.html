@@ -1,1 +1,5 @@
-<p>product-create works!</p>
+<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+  <input type="text" formControlName="name" />
+  <input type="number" formControlName="price" />
+  <button type="submit" [disabled]="!productForm.valid">Thêm</button>
+</form>

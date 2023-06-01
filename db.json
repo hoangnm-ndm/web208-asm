@@ -1,9 +1,76 @@
 {
   "products": [
-    { "id": "1", "name": "product A", "price": 200 },
-    { "id": "2", "name": "product B", "price": 200 },
-    { "id": "3", "name": "product C", "price": 200 },
-    { "id": "4", "name": "product D", "price": 200 }
+    {
+      "name": "ssds",
+      "price": 0,
+      "id": "VWIGa8K"
+    },
+    {
+      "name": "ssds",
+      "price": 4,
+      "id": "rcPr6iy"
+    },
+    {
+      "id": "81way1G",
+      "name": "sdssdsd",
+      "price": 7
+    },
+    {
+      "id": "llUr9eR",
+      "name": "dfdfdfdf",
+      "price": 3
+    },
+    {
+      "id": "Upf8Kky",
+      "name": "sdsds",
+      "price": 0
+    },
+    {
+      "id": "rDwr00Y",
+      "name": "sdsds",
+      "price": 3
+    },
+    {
+      "name": "san pham a",
+      "price": 11,
+      "id": "9tbjUlc"
+    },
+    {
+      "name": "san pham assdsdsd",
+      "price": 11,
+      "id": "lg8lLcv"
+    },
+    {
+      "name": "san pham assdsdsd",
+      "price": 222222,
+      "id": "Vum4yIs"
+    },
+    {
+      "name": "san pham assdsdsd",
+      "price": 0,
+      "id": "hpw7ckI"
+    },
+    {
+      "name": "saeeeee",
+      "price": 2121212121,
+      "id": "mn1KGr3"
+    },
+    {
+      "id": "vqcrbWk",
+      "name": "sdsdsds",
+      "price": 0
+    },
+    {
+      "id": "GTqZLqa",
+      "name": "qưqqqq",
+      "price": 0
+    }
   ],
-  "users": [{ "id": "1", "username": "hoangnm", "password": "1234567" }]
+  "users": [
+    {
+      "id": "1",
+      "username": "hoangnm",
+      "password": "1234567"
+    }
+  ]
 }

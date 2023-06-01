@@ -109,6 +109,28 @@ export class ProductService {
 }
 ```
 
+- Khi sử dụng HttpClient, bạn sẽ gặp lỗi:
+
+```error
+core.mjs:10162 ERROR Error: Uncaught (in promise): NullInjectorError: R3InjectorError(AppModule)[ProductService -> HttpClient -> HttpClient]:
+  NullInjectorError: No provider for HttpClient!
+NullInjectorError: R3InjectorError(AppModule)[ProductService -> HttpClient -> HttpClient]:
+  NullInjectorError: No provider for HttpClient!
+```
+
+- Lúc này cần phải import HttpClientModule trong app.module.ts:
+
+```js
+import { HttpClientModule } from "@angular/common/http";
+
+@NgModule({
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  providers: [],
+  bootstrap: [AppComponent],
+})
+export class AppModule {}
+```
+
 # B5: get products-list
 
 Trong products-list/products-list.component.ts, gọi ra danh sách sản phẩm:
@@ -176,9 +198,88 @@ npm i bootstrap
 
 - khởi chạy `ng s -o ` và kiểm tra xem đã hiển thị được danh sách sản phẩm hay chưa.
 
-# B7: Xây dựng tính năng xoá
+# B7: Xây dựng tính năng/trang create new product (form)
 
-# B8: Xây dựng tính năng/trang create new product (form)
+- Tại trang products-list, thay đổi đường dẫn create-new để sau khi nhấn sẽ chuyển sang trang create-new:
+
+```html
+<a routerLink="product-create">Create New</a>
+```
+
+- Tại template của product-create, thêm form:
+
+```html
+<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+  <input type="text" formControlName="name" />
+  <input type="number" formControlName="price" />
+  <button type="submit" [disabled]="!productForm.valid">Thêm</button>
+</form>
+```
+
+- Tại component của product-create, tạo FormControl:
+
+```js
+import { Component } from '@angular/core';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
+import { IProduct } from '../interface/IProduct';
+import { ProductService } from '../services/product.service';
+
+@Component({
+  selector: 'app-product-create',
+  templateUrl: './product-create.component.html',
+  styleUrls: ['./product-create.component.css'],
+})
+export class ProductCreateComponent {
+  productForm = this.formBuilder.group({
+    name: ['', [Validators.required, Validators.minLength(4)]],
+    price: [0],
+  });
+
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private productService: ProductService
+  ) {}
+  onHandleSubmit() {
+    const product: IProduct = {
+      id: '',
+      name: this.productForm.value.name || '',
+      price: this.productForm.value.price || 0,
+    };
+
+    this.productService.addProduct(product).subscribe((product) => {
+      alert(`Thêm sản phẩm thành công: ${product.name}`);
+    });
+  }
+}
+
+```
+
+- Lưu ý: khi dùng formGroup trong template, bạn cần import ReactiveFormsModule trong mục app.module.ts:
+
+```ts
+  imports: [
+    ...
+    ReactiveFormsModule,
+  ],
+```
+
+# B8: Xây dựng tính năng xoá
+
+- Tại template của trang products-list, thêm sự kiện cho button "Xoá":
+
+```html
+<button class="btn btn-danger" (click)="delete(item.id!)">Xóa</button>
+```
+
+- Tại component của trang products-list, hãy khai báo chức năng xoá:
+
+```ts
+  delete(id: string) {
+    this.productService.deleteProduct(id).subscribe(() => {
+      this.products = this.products.filter(product => product.id !== id)
+    })
+  }
+```
 
 # B9: Xây dựng tính năng/trang update product
 
