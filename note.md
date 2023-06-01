@@ -134,7 +134,23 @@ export class ProductsListComponent {
 
 # B6: Xây dựng giao diện trang product-list:
 
-Trong products-list/products-list.component.html:
+- Cài đặt bootstrap:
+
+```
+npm i bootstrap
+```
+
+- Thêm thư viện boostrap vào trong angular.json. mục projects/architect/build/options:
+
+```json
+"styles": [
+  "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+  "src/styles.css"
+],
+"scripts": ["./node_modules/bootstrap/dist/js/bootstrap.min.js"]
+```
+
+- Trong products-list/products-list.component.html, hãy thêm:
 
 ```html
 <a routerLink="product-create">Create New</a>
