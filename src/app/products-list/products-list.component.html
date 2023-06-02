@@ -13,7 +13,7 @@
     <div class="col-3 d-flex justify-content-around">
       <button>View Detail</button>
       <button class="btn btn-danger" (click)="delete(product.id!)">Xóa</button>
-      <button>Update</button>
+      <a class="btn" [routerLink]="'products-update/' + product.id">Update</a>
     </div>
   </div>
 </div>
