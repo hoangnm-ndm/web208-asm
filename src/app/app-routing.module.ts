@@ -9,7 +9,6 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: ProductsListComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
   { path: 'product-create', component: ProductCreateComponent },
   { path: 'products-update/:id', component: ProductUpdateComponent },
   { path: 'product-detail/:id', component: ProductDetailComponent },
