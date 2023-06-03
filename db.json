@@ -1,61 +1,6 @@
 {
   "products": [
     {
-      "name": "ssds",
-      "price": 0,
-      "id": "VWIGa8K"
-    },
-    {
-      "name": "ssds",
-      "price": 4,
-      "id": "rcPr6iy"
-    },
-    {
-      "id": "81way1G",
-      "name": "sdssdsd",
-      "price": 7
-    },
-    {
-      "id": "llUr9eR",
-      "name": "dfdfdfdf",
-      "price": 3
-    },
-    {
-      "id": "Upf8Kky",
-      "name": "sdsds",
-      "price": 0
-    },
-    {
-      "id": "rDwr00Y",
-      "name": "sdsds",
-      "price": 3
-    },
-    {
-      "name": "san pham a",
-      "price": 11,
-      "id": "9tbjUlc"
-    },
-    {
-      "name": "san pham assdsdsd",
-      "price": 11,
-      "id": "lg8lLcv"
-    },
-    {
-      "name": "san pham assdsdsd",
-      "price": 222222,
-      "id": "Vum4yIs"
-    },
-    {
-      "name": "san pham assdsdsd",
-      "price": 0,
-      "id": "hpw7ckI"
-    },
-    {
-      "name": "saeeeee",
-      "price": 2121212121,
-      "id": "mn1KGr3"
-    },
-    {
       "id": "vqcrbWk",
       "name": "sdsdsds",
       "price": 0
@@ -64,6 +9,26 @@
       "id": "GTqZLqa",
       "name": "qưqqqq",
       "price": 0
+    },
+    {
+      "id": "hpgbZCz",
+      "name": "sdsd",
+      "price": 200
+    },
+    {
+      "id": "_kpI6v_",
+      "name": "êrdfdfdfdfd",
+      "price": 2000
+    },
+    {
+      "id": "ypsL7ne",
+      "name": "s3232sdss",
+      "price": 2332332
+    },
+    {
+      "id": "JnaYvG6",
+      "name": "s3232sdss",
+      "price": 2332332
     }
   ],
   "users": [

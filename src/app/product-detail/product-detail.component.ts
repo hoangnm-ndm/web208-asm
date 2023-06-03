@@ -11,7 +11,17 @@ import { ProductService } from '../services/product.service';
 export class ProductDetailComponent {
   product!: IProduct;
   constructor(
-    private productService: ProductService,
-    private router: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {
+    this.route.paramMap.subscribe((param) => {
+      const id = String(param.get('id'));
+      this.productService.getProductById(id).subscribe(
+        (product) => {
+          this.product = product;
+        },
+        (error) => console.log(error.message)
+      );
+    });
+  }
 }

@@ -11,7 +11,9 @@
     <div class="col-3 d-flex justify-content-around">{{ product.name }}</div>
     <div class="col-3 d-flex justify-content-around">{{ product.price }}</div>
     <div class="col-3 d-flex justify-content-around">
-      <button>View Detail</button>
+      <a class="btn" [routerLink]="'product-detail/' + product.id"
+        >View Detail</a
+      >
       <button class="btn btn-danger" (click)="delete(product.id!)">Xóa</button>
       <a class="btn" [routerLink]="'products-update/' + product.id">Update</a>
     </div>

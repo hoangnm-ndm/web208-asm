@@ -1,5 +1,7 @@
-<form (ngSubmit)="onHandleSubmit()" [formGroup]="productForm">
-  <input type="text" formControlName="name" placeholder="Tên sản phẩm" />
-  <input type="number" formControlName="price" placeholder="Giá sản phẩm" />
-  <button>Thêm sản phẩm</button>
-</form>
+<div class="container">
+  <form (ngSubmit)="onHandleSubmit()" [formGroup]="productForm">
+    <input type="text" formControlName="name" placeholder="Tên sản phẩm" />
+    <input type="number" formControlName="price" placeholder="Giá sản phẩm" />
+    <button>Cập nhật sản phẩm</button>
+  </form>
+</div>

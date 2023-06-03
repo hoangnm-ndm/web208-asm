@@ -38,10 +38,10 @@ npm run dev
 ```js
 const routes: Routes = [
   { path: "", component: ProductsListComponent },
-
   { path: "product/:id", component: ProductDetailComponent },
   { path: "product-create", component: ProductCreateComponent },
   { path: "products-update/:id", component: ProductUpdateComponent },
+  { path: "product-detail/:id", component: ProductDetailComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
 ];
@@ -209,11 +209,13 @@ npm i bootstrap
 - Tại template của product-create, thêm form:
 
 ```html
-<form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
-  <input type="text" formControlName="name" />
-  <input type="number" formControlName="price" />
-  <button type="submit" [disabled]="!productForm.valid">Thêm</button>
-</form>
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="onHandleSubmit()">
+    <input type="text" formControlName="name" />
+    <input type="number" formControlName="price" />
+    <button type="submit" [disabled]="!productForm.valid">Thêm</button>
+  </form>
+</div>
 ```
 
 - Tại component của product-create, tạo FormControl:
@@ -296,11 +298,13 @@ export class ProductCreateComponent {
 - Tại template của trang product-update, tạo form:
 
 ```html
-<form (ngSubmit)="onHandleSubmit()" [formGroup]="productForm">
-  <input type="text" formControlName="name" placeholder="Tên sản phẩm" />
-  <input type="number" formControlName="price" placeholder="Giá sản phẩm" />
-  <button>Thêm sản phẩm</button>
-</form>
+<div class="container">
+  <form (ngSubmit)="onHandleSubmit()" [formGroup]="productForm">
+    <input type="text" formControlName="name" placeholder="Tên sản phẩm" />
+    <input type="number" formControlName="price" placeholder="Giá sản phẩm" />
+    <button>Cập nhật sản phẩm</button>
+  </form>
+</div>
 ```
 
 - Tại product-update.component.ts, thực hiện các việc sau:
@@ -365,11 +369,42 @@ export class ProductUpdateComponent {
 
 # B10: Xây dựng trang product detail
 
+- Tại template product-detail, xây dựng giao diện:
+
+```html
+<div class="container">
+  <div *ngIf="product">
+    <h2>{{ product.name }}</h2>
+    <p>Giá: {{ product.price }}</p>
+  </div>
+</div>
+```
+
+- Tại component product-detail, thực hiện get product dựa vào id.
+
+```ts
+  product!: IProduct;
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService
+  ) {
+    this.route.paramMap.subscribe((param) => {
+      const id = String(param.get('id'));
+      this.productService.getProductById(id).subscribe(
+        (product) => {
+          this.product = product;
+        },
+        (error) => console.log(error.message)
+      );
+    });
+  }
+```
+
 # B11: Xây dựng tính năng register
 
 # B12: Xây dựng tính năng login
 
-# B13: Xây dựng tính năng phân quyền
+# B13: Xây dựng tính năng phân quyền, bảo vệ secret router
 
 - Khi đăng nhập và có quyền admin -> chuyển về trang products-list
 - Khi chưa đăng nhập, thông báo chưa đăng nhập

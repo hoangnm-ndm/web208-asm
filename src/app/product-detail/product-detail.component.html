@@ -1,1 +1,6 @@
-<p *ngIf="product">{{ product.name }} - {{ product.price }}</p>
+<div class="container">
+  <div *ngIf="product">
+    <h2>{{ product.name }}</h2>
+    <p>Giá: {{ product.price }}</p>
+  </div>
+</div>
