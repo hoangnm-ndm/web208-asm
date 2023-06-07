@@ -1,7 +1,7 @@
 <div class="container">
   <div *ngIf="product">
     <h2>{{ product.name }}</h2>
-    <p>Giá: {{ product.price }}</p>
-    <p>Giá: {{ product.desc }}</p>
+    <p>Giá: {{ product.price | number }}</p>
+    <p>Mô tả: {{ product.desc }}</p>
   </div>
 </div>

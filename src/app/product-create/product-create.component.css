@@ -1,0 +1,16 @@
+#form {
+  width: 600px;
+  max-width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 24px;
+  margin: 100px auto 0;
+}
+
+label,
+input,
+button {
+  display: block;
+  width: 100%;
+  margin: 12px;
+}
