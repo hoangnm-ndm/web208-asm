@@ -8,9 +8,10 @@ import { ProductsListComponent } from './products-list/products-list.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: ProductsListComponent },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: 'products', component: ProductsListComponent },
   { path: 'product-create', component: ProductCreateComponent },
-  { path: 'products-update/:id', component: ProductUpdateComponent },
+  { path: 'product-update/:id', component: ProductUpdateComponent },
   { path: 'product-detail/:id', component: ProductDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

@@ -11,6 +11,7 @@ import { ProductCreateComponent } from './product-create/product-create.componen
 import { ProductUpdateComponent } from './product-update/product-update.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
   ],
   providers: [],
