@@ -30,6 +30,7 @@ export class ProductUpdateComponent implements OnInit {
         ],
       ],
       price: [0, [Validators.required, Validators.min(0)]],
+      desc: '',
     });
 
     this.route.paramMap.subscribe((params) => {
@@ -57,14 +58,15 @@ export class ProductUpdateComponent implements OnInit {
         ...this.product,
         name: this.productForm.value.name,
         price: this.productForm.value.price,
+        desc: this.productForm.value.desc,
       };
 
       this.productService.updateProduct(updatedProduct).subscribe(
         (product) => {
-          console.log('Product updated successfully', product);
+          alert(`Product updated successfully: ${product.name}`);
         },
         (error) => {
-          console.error('Failed to update product', error);
+          alert(`Failed to update product: ${error.message}`);
         }
       );
     }

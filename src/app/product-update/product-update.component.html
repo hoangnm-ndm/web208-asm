@@ -2,6 +2,7 @@
   <form (ngSubmit)="onHandleSubmit()" [formGroup]="productForm">
     <input type="text" formControlName="name" placeholder="Tên sản phẩm" />
     <input type="number" formControlName="price" placeholder="Giá sản phẩm" />
+    <input type="text" formControlName="desc" placeholder="Mô tả sản phẩm" />
     <button>Cập nhật sản phẩm</button>
   </form>
 </div>
