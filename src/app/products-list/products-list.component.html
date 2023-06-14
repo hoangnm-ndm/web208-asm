@@ -1,9 +1,9 @@
 <div class="container">
   <a class="btn btn-primary" routerLink="/product-create">Create New</a>
   <div class="row">
-    <div class="col-3 d-flex justify-content-around"><strong>STT</strong></div>
-    <div class="col-3 d-flex justify-content-around"><strong>Name</strong></div>
-    <div class="col-3 d-flex justify-content-around">
+    <div class="col-3"><strong>STT</strong></div>
+    <div class="col-3"><strong>Name</strong></div>
+    <div class="col-3">
       <strong>Price</strong>
     </div>
     <div class="col-3 d-flex justify-content-around">
@@ -11,10 +11,10 @@
     </div>
   </div>
   <div class="row" *ngFor="let product of products; index as i">
-    <div class="col-3 d-flex justify-content-around">{{ i + 1 }}</div>
-    <div class="col-3 d-flex justify-content-around">{{ product.name }}</div>
-    <div class="col-3 d-flex justify-content-around">{{ product.price }}</div>
-    <div class="col-3 d-flex justify-content-around">
+    <div class="col-3">{{ i + 1 }}</div>
+    <div class="col-3">{{ product.name }}</div>
+    <div class="col-3">{{ product.price }}</div>
+    <div class="col-3 d-flex justify-content-around flex-column">
       <a class="btn btn-primary" [routerLink]="'/product-detail/' + product.id"
         >View Detail</a
       >

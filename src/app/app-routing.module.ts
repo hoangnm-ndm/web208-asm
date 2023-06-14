@@ -17,6 +17,32 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 ];
 
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: LayoutClientComponent,
+//     children: [
+//       { path: '', component: HomeComponent },
+//       { path: 'about', component: AboutComponent },
+//       { path: 'login', component: LoginComponent },
+//       { path: 'register', component: RegisterComponent },
+//       { path: 'product/:id', component: ProductDetailComponent },
+//     ],
+//   },
+//   {
+//     path: 'admin',
+//     component: LayoutAdminComponent,
+//     children: [
+//       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+//       { path: 'dashboard', component: DashboardComponent },
+//       { path: 'products', component: ProductsComponent },
+//       { path: 'create-product', component: CreateProductComponent },
+//     ],
+//   },
+
+//   { path: '**', component: NotfoundComponent },
+// ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

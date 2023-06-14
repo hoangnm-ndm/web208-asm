@@ -5,8 +5,8 @@
 /tmp
 /out-tsc
 /bazel-out
-/db.json
-
+db.json
+yarn.lock
 # Node
 /node_modules
 npm-debug.log
